@@ -13,10 +13,8 @@
 #define MY_DEBUG
 
 // Use a bit lower baudrate for serial prints on ESP8266 than default in MyConfig.h
-//#define MY_BAUD_RATE 9600
+#define MY_BAUD_RATE 9600
 
-// Enables and select radio type (if attached)
-#define MY_RADIO_NRF24
 
 
 #define MY_ESP8266_SSID "iot"
@@ -39,10 +37,7 @@
 #define MY_TRANSPORT_DISCOVERY_INTERVAL_MS (10*60*1000ul)
 #define MY_ROUTING_TABLE_SAVE_INTERVAL_MS (10*60*1000ul)
 
-#define MY_SIGNING_ATSHA204
-//#define MY_SIGNING_ATSHA204_PIN 4
 #define MY_SIGNING_REQUEST_SIGNATURES
-#define MY_RF24_ENABLE_ENCRYPTION
 
 // Set MQTT client id
 #define MY_MQTT_CLIENT_ID "mysensors-1"
@@ -50,7 +45,7 @@
 #include <ESP8266WiFi.h>
 
 
-
+#include "options.h"
 #include "lib/MySensors.h"
 
 
