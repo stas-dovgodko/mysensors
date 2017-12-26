@@ -39,6 +39,17 @@
 
 #define MY_SIGNING_REQUEST_SIGNATURES
 
+#define TRIGGER_PIN 3
+#define STATUS_LED BUILTIN_LED
+
+#define MY_INCLUSION_MODE_FEATURE
+//#define MY_INCLUSION_BUTTON_FEATURE
+//#define MY_INCLUSION_MODE_BUTTON_PIN 3
+#define MY_INCLUSION_MODE_DURATION 60
+
+// Set blinking period
+#define MY_DEFAULT_LED_BLINK_PERIOD 300
+
 // Set MQTT client id
 #define MY_MQTT_CLIENT_ID "mysensors-1"
 
@@ -88,8 +99,7 @@ char mqtt_user[255] = ""; // Логи от сервер
 char mqtt_pass[255] = ""; // Пароль от сервера
 char mqtt_path[255] = "/";
 
-#define TRIGGER_PIN D3
-#define STATUS_LED BUILTIN_LED
+
 
 
 
@@ -219,10 +229,10 @@ void soft_reset() {
 //String incoming = ""; int opt = 0; String opts[5]; String cmd = ""; bool esc = false;
 void loop() {
 
-  /*if ( digitalRead(TRIGGER_PIN) == LOW ) {
-    MY_SERIALDEVICE.println("Config on demand");
-    doWifiConnect();
-  }*/
+  if ( digitalRead(TRIGGER_PIN) == LOW ) {
+    MY_SERIALDEVICE.println("PIN");
+    inclusionModeSet(true);
+  }
 
   if (error) {
     // blink sos
